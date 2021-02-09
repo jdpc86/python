@@ -24,10 +24,16 @@ except TypeError:
 
 
 pub = partial.publickey()
+pub_key = pub.exportKey("PEM") #export pubkey in PEM format
+pub_key_filename = "./rsa_archerc8_pub"
+with open(pub_key_filename, "w+b") as fd:
+    fd.write(pub_key)
+    os.chmod(pub_key_filename, 0o600)
+
 # pri = partial.privatekey()
 
 private_key = partial.exportKey("PEM")
-private_key_filename = "/Users/jd/tmpjd/id_rsa"
+private_key_filename = "./rsa_archerc8_pri"
 with open(private_key_filename, "w+b") as fd:
     fd.write(private_key)
     os.chmod(private_key_filename, 0o600)
